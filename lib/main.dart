@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tntf/rx_dart/first_page.dart';
+import 'package:tntf/rx_dart/home_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -25,7 +25,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: FirstPage(),
+      debugShowCheckedModeBanner: false,
+      home: HomePage(),
     );
   }
 }
