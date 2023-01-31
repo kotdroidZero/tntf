@@ -24,12 +24,12 @@ class Api {
     // we don't have the values cached, let's call APIs
 
     // start by calling persons api
-    final persons = await _getJson('http://127.0.0.1:5500/apis/persons.json')
+    final persons = await _getJson('http://10.10.20.54:5500/apis/persons.json')
         .then((json) => json.map((value) => Person.fromJson(value)));
     _persons = persons.toList();
 
     // start by calling persons api
-    final animals = await _getJson('http://127.0.0.1:5500/apis/animals.json')
+    final animals = await _getJson('http://10.10.20.54:5500/apis/animals.json')
         .then((json) => json.map((value) => Animal.fromJson(value)));
     _animals = animals.toList();
 
@@ -61,7 +61,7 @@ class Api {
     }
   }
 
-  Future<List<dynamic>> _getJson(String url) => HttpClient()
+  Future<List<dynamic>> _getJson(String url) async => await HttpClient()
       .getUrl(Uri.parse(url))
       .then((req) => req.close())
       .then((response) => response.transform(utf8.decoder).join())
